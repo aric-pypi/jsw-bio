@@ -1,0 +1,25 @@
+{
+  "name": "jsw-bio",
+  "private": true,
+  "description": "Jsw for biography.",
+  "scripts": {
+    "test": "poetry run pytest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aric-pypi/jsw-bio.git"
+  },
+  "keywords": [
+    "jswork",
+    "nx",
+    "next",
+    "toolkit",
+    "python"
+  ],
+  "author": "afeiship",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aric-pypi/jsw-bio/issues"
+  },
+  "homepage": "https://github.com/aric-pypi/jsw-bio#readme"
+}
