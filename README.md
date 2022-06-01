@@ -8,8 +8,10 @@ pip install jsw-bio -U
 
 ## usage
 ```python
-import jsw_bio as nx
+import jsw_bio as bio
 
 ## common methods
-nx.includes([1,2,3], 2) # => True
+# get fasta/genbank url
+bio.url('7EU9_A', 'fasta')
+bio.url('7EU9_A', 'gb')
 ```
