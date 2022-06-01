@@ -5,3 +5,4 @@ __version__ = version
 
 # next base
 from jsw_bio.base.url import url
+from jsw_bio.base.keyword import keyword
