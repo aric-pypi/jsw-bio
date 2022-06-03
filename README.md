@@ -14,4 +14,5 @@ import jsw_bio as bio
 # get fasta/genbank url
 bio.url('7EU9_A', 'fasta')
 bio.url('7EU9_A', 'gb')
+bio.ncbi_download_accids(keyword='cas12') # ['VEJ66715.1', 'SUY72866.1', 'SUY81473.1', ...
 ```
