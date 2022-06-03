@@ -5,7 +5,7 @@ NCBI_BASE_URL = 'https://www.ncbi.nlm.nih.gov'
 QUERY_KEY = '[name="EntrezSystem2.PEntrez.Protein.Sequence_ResultsPanel.Sequence_DisplayBar.QueryKey"]'
 
 
-def download_accids(**kwargs):
+def ncbi_download_accids(**kwargs):
     keyword = kwargs.get('keyword')
     res1 = requests.get(f'{NCBI_BASE_URL}/protein/?term={keyword}')
     soup = BeautifulSoup(res1.text, 'html.parser')
