@@ -6,8 +6,8 @@ QUERY_KEY = '[name="EntrezSystem2.PEntrez.Protein.Sequence_ResultsPanel.Sequence
 
 
 def ncbi_download_accids(**kwargs):
-    keyword = kwargs.get('keyword')
-    res1 = requests.get(f'{NCBI_BASE_URL}/protein/?term={keyword}')
+    term = kwargs.get('term')
+    res1 = requests.get(f'{NCBI_BASE_URL}/protein/?term={term}')
     soup = BeautifulSoup(res1.text, 'html.parser')
     query_key_el = soup.select_one(QUERY_KEY)
     query_key = query_key_el.attrs['value']
