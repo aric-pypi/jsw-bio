@@ -17,7 +17,7 @@ def ncbi_download_accids(**kwargs):
         stream=True,
         cookies=res1.cookies)
 
-    with open(filename, "ab") as f:
+    with open(filename, "wb") as f:
         for chunk in res2.iter_content(chunk_size=chunk_size):
             if chunk:
                 f.write(chunk)

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "jsw-bio"
-version = "1.0.6"
+version = "1.0.7"
 description = "Jsw for biography."
 authors = ["feizheng <1290657123@qq.com>"]
 readme = "README.md"
