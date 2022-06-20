@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "jsw-bio"
-version = "1.0.12"
+version = "1.0.13"
 description = "Jsw for biography."
 authors = ["feizheng <1290657123@qq.com>"]
 readme = "README.md"
@@ -11,7 +11,7 @@ homepage = "https://js.work"
 python = "^3.8"
 psutil = "^5.9.0"
 bs4 = "^0.0.1"
-jsw-nx = "^1.0.92"
+jsw-nx = "^1.0.104"
 requests = "^2.27.1"
 nltk = "^3.7"
 biopython = "^1.79"

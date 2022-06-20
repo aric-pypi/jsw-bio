@@ -2,6 +2,9 @@ import nltk
 
 
 def keyword(in_string, **kwargs):
+    if not in_string:
+        return None
+
     sentences = nltk.sent_tokenize(in_string)
     selector = kwargs.get('selector', lambda item: 'NNP' == item[1])
     callback = kwargs.get('callback', lambda item: item[0].lower())
