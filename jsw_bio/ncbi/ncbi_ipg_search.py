@@ -4,6 +4,9 @@ import jsw_nx as nx
 from bs4 import BeautifulSoup
 
 
+# https://js.work/posts/a97e4e73abb6e
+
+
 class NcbiIpgSearch:
     def __init__(self, **kwargs):
         self.term = kwargs.get('term')
