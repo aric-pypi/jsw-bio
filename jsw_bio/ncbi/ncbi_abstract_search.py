@@ -7,16 +7,16 @@ from bs4 import BeautifulSoup
 # https://js.work/posts/a97e4e73abb6e
 
 
-class NcbiIpgSearch:
+class NcbiAbstractSearch:
     def __init__(self, **kwargs):
         self.term = kwargs.get('term')
         self.size = kwargs.get('size', 20)
         self.last_query_key = '1'
+        self.db = 'protein'
         self.session_id = None
-        self.update_session()
 
     def update_session(self):
-        url = f'https://www.ncbi.nlm.nih.gov/ipg?term={self.term}'
+        url = f'https://www.ncbi.nlm.nih.gov/{self.db}?term={self.term}'
         res = requests.get(url)
         soup = BeautifulSoup(res.text, 'html.parser')
         last_query_key_el = soup.select_one('[name="EntrezSystem2.PEntrez.DbConnector.LastQueryKey"]')
@@ -24,18 +24,14 @@ class NcbiIpgSearch:
         self.session_id = res.headers.get('NCBI-SID')
 
     def get(self, page=1, **kwargs):
-        page = kwargs.get('page', page)
-        size = kwargs.get('size', self.size)
-        data = {
+        data = self.get_post_data(page, **kwargs)
+        data.update({
             'term': self.term,
-            'EntrezSystem2.PEntrez.Ipg.Ipg_ResultsPanel.Ipg_DisplayBar.PageSize': size,
-            'EntrezSystem2.PEntrez.Ipg.Ipg_ResultsPanel.Entrez_Pager.CurrPage': page,
             'EntrezSystem2.PEntrez.DbConnector.LastQueryKey': self.last_query_key,
             'EntrezSystem2.PEntrez.DbConnector.Cmd': 'PageChanged'
-        }
-
+        })
         headers = {'cookie': f'ncbi_sid={self.session_id}'}
-        res = requests.post("https://www.ncbi.nlm.nih.gov/ipg", data=data, headers=headers)
+        res = requests.post(f'https://www.ncbi.nlm.nih.gov/{self.db}', data=data, headers=headers)
         soup = BeautifulSoup(res.text, 'html.parser')
 
         el_title = soup.select_one('title')
@@ -48,6 +44,14 @@ class NcbiIpgSearch:
         else:
             self.update_session()
             return self.get(**kwargs)
+
+    def get_post_data(self, page=1, **kwargs):
+        page = kwargs.get('page', page)
+        size = kwargs.get('size', self.size)
+        return {
+            'EntrezSystem2.PEntrez.Protein.Sequence_ResultsPanel.Ipg_DisplayBar.PageSize': size,
+            'EntrezSystem2.PEntrez.Protein.Sequence_ResultsPanel.Entrez_Pager.CurrPage': page,
+        }
 
     @classmethod
     def get_ids(cls, soup):
