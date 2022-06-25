@@ -1,11 +1,4 @@
-import requests
-import jsw_nx as nx
-
-from bs4 import BeautifulSoup
 from .ncbi_abstract_search import NcbiAbstractSearch
-
-
-# https://js.work/posts/a97e4e73abb6e
 
 
 class NcbiSearchIpg(NcbiAbstractSearch):
