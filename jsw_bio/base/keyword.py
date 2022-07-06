@@ -3,7 +3,7 @@ import nltk
 
 def keyword(in_string, **kwargs):
     if not in_string:
-        return None
+        return []
 
     sentences = nltk.sent_tokenize(in_string)
     selector = kwargs.get('selector', lambda item: 'NNP' == item[1])
