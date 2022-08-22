@@ -1,16 +1,10 @@
-from Bio import Entrez
+from .entrez_search_accids import entrez_search_accids
 
 
 def entrez_download_accids(**kwargs):
-    limit = kwargs.get('limit', 100)
     term = kwargs.get('term', 'cas15')
-    db = kwargs.get('db', 'protein')
     filename = kwargs.get('filename', f'{term}.list')
-
-    Entrez.email = "A.N.Other@example.com"  # Always tell NCBI who you are
-    handle = Entrez.esearch(db=db, term=term, retmax=limit)
-    record = Entrez.read(handle)
-
+    record = entrez_search_accids(**kwargs)
     res = '\n'.join(record['IdList'])
 
     open(filename, "w").write(res)
