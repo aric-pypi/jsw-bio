@@ -11,4 +11,6 @@ def entrez_download_accids(**kwargs):
     handle = Entrez.esearch(db=db, term=term, retmax=limit)
     record = Entrez.read(handle)
 
-    open(filename, "w").write(record['IdList'])
+    res = '\n'.join(record['IdList'])
+
+    open(filename, "w").write(res)
