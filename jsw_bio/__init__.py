@@ -9,6 +9,7 @@ from jsw_bio.base.keyword import keyword
 from jsw_bio.ncbi.entrez_download_accids import entrez_download_accids
 from jsw_bio.ncbi.entrez_search_accids import entrez_search_accids
 from jsw_bio.ncbi.ncbi_download_accids import ncbi_download_accids
+from jsw_bio.ncbi.ncbi_fasta2md5 import ncbi_fasta2md5
 from jsw_bio.ncbi.ncbi_fasta_text import ncbi_fasta_text
 from jsw_bio.ncbi.ncbi_gb_text import ncbi_gb_text
 from jsw_bio.ncbi.ncbi_search_ipg import NcbiSearchIpg
